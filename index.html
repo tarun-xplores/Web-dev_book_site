@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Complete Web Development Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css"
+        integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --primary-color: #3498db;
@@ -13,20 +17,20 @@
             --danger-color: #e74c3c;
             --warning-color: #f39c12;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #01001d;
             color: #ffffff;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1500px;
             margin: 0 auto;
@@ -34,40 +38,40 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         header {
-            position:sticky;
-            top:0;
-            z-index:100;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             background-color: var(--dark-color);
             color: white;
             padding: 0px 0;
             width: 100%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
-        
+
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.8;
         }
-        
+
         .sidebar {
             width: 300px;
             background-color: rgb(6, 56, 122);
             color: white;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             position: sticky;
             top: 20px;
@@ -79,35 +83,35 @@
             flex-direction: column;
             margin-right: 30px;
         }
-        
+
         .main-content {
             flex: 1;
             background-color: rgb(20, 85, 117);
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 30px;
             min-width: 300px;
             margin-left: 30px;
         }
-        
+
         .toc-title {
             font-size: 1.5rem;
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--light-color);
         }
-        
+
         .toc-list {
             list-style-type: none;
-            flex:1;
+            flex: 1;
             overflow-y: auto;
         }
-        
+
         .toc-item {
             margin-bottom: 8px;
-            color:white;
+            color: white;
         }
-        
+
         .toc-link {
             color: var(--light-color);
             text-decoration: none;
@@ -115,45 +119,45 @@
             padding: 5px 0;
             transition: all 0.3s ease;
         }
-        
+
         .toc-link:hover {
             color: var(--primary-color);
             padding-left: 5px;
         }
-        
+
         .chapter {
             margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
-        
+
         .chapter:last-child {
             border-bottom: none;
         }
-        
+
         h2 {
             color: var(--primary-color);
             margin-bottom: 15px;
             font-size: 2rem;
         }
-        
+
         h3 {
             color: var(--secondary-color);
             margin: 20px 0 10px;
             font-size: 1.5rem;
         }
-        
+
         p {
             margin-bottom: 15px;
         }
-        
+
         code {
             padding: 2px 5px;
             border-radius: 3px;
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.2rem;
         }
-        
+
         pre {
             background-color: #282c34;
             color: #ffffff;
@@ -164,7 +168,7 @@
             font-family: 'Courier New', Courier, monospace;
             line-height: 1.5;
         }
-        
+
         .code-header {
             display: flex;
             justify-content: space-between;
@@ -176,16 +180,16 @@
             color: #ccc;
             font-size: 0.8rem;
         }
-        
+
         .code-copy {
             cursor: pointer;
             transition: color 0.3s;
         }
-        
+
         .code-copy:hover {
             color: var(--primary-color);
         }
-        
+
         .note {
             background-color: #2e3235;
             border-left: 4px solid var(--primary-color);
@@ -193,7 +197,7 @@
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
         }
-        
+
         .warning {
             background-color: #63530a;
             border-left: 4px solid var(--warning-color);
@@ -201,7 +205,7 @@
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
         }
-        
+
         .danger {
             background-color: #423f40;
             border-left: 4px solid var(--danger-color);
@@ -209,7 +213,7 @@
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
         }
-        
+
         .success {
             background-color: #343634;
             border-left: 4px solid var(--secondary-color);
@@ -217,41 +221,42 @@
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        
-        th, td {
+
+        th,
+        td {
             border: 1px solid #363434;
             padding: 12px;
             text-align: left;
         }
-        
+
         th {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         tr:nth-child(even) {
             background-color: #302d2d;
         }
-        
+
         .exercise {
             background-color: #34383b;
             padding: 40px;
             border-radius: 5px;
             margin: 15px 0;
         }
-        
+
         .exercise-title {
             font-weight: bold;
             margin-bottom: 10px;
             color: #c65364;
         }
-        
+
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -264,19 +269,19 @@
             cursor: pointer;
             font-size: 1rem;
         }
-        
+
         .btn:hover {
             background-color: #2980b9;
         }
-        
+
         .btn-secondary {
             background-color: var(--secondary-color);
         }
-        
+
         .btn-secondary:hover {
             background-color: #27ae60;
         }
-        
+
         .diagram {
             background-color: rgb(87, 104, 109);
             border: 1px solid #ddd;
@@ -285,7 +290,7 @@
             text-align: center;
             border-radius: 5px;
         }
-        
+
         footer {
             background-color: var(--dark-color);
             color: white;
@@ -294,43 +299,43 @@
             margin-top: 40px;
             width: 100%;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
-            
+
             .sidebar {
                 width: 100%;
                 position: static;
                 margin-bottom: 20px;
             }
-            
+
             .main-content {
                 width: 100%;
             }
         }
-        
+
         /* Dark mode toggle */
         .dark-mode-toggle {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .switch {
             position: relative;
             display: inline-block;
             width: 60px;
             height: 34px;
         }
-        
+
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-        
+
         .slider {
             position: absolute;
             cursor: pointer;
@@ -342,7 +347,7 @@
             transition: .4s;
             border-radius: 34px;
         }
-        
+
         .slider:before {
             position: absolute;
             content: "";
@@ -354,80 +359,80 @@
             transition: .4s;
             border-radius: 50%;
         }
-        
-        input:checked + .slider {
+
+        input:checked+.slider {
             background-color: var(--primary-color);
         }
-        
-        input:checked + .slider:before {
+
+        input:checked+.slider:before {
             transform: translateX(26px);
         }
-        
+
         /* Dark mode styles */
         body.dark-mode {
             background-color: #121212;
             color: #e0e0e0;
         }
-        
+
         body.dark-mode .sidebar,
         body.dark-mode .main-content {
             background-color: #1e1e1e;
             color: #e0e0e0;
         }
-        
+
         body.dark-mode code {
             background-color: #2d2d2d;
             color: #f8f8f2;
         }
-        
+
         body.dark-mode pre {
             background-color: #1e1e1e;
         }
-        
+
         body.dark-mode .code-header {
             background-color: #121212;
         }
-        
+
         body.dark-mode .toc-link {
             color: #e0e0e0;
         }
-        
+
         body.dark-mode .note {
             background-color: #1a3a5c;
             border-left-color: #4a90e2;
         }
-        
+
         body.dark-mode .warning {
             background-color: #5a4a1a;
             border-left-color: #d4a017;
         }
-        
+
         body.dark-mode .danger {
             background-color: #5a1a1a;
             border-left-color: #e74c3c;
         }
-        
+
         body.dark-mode .success {
             background-color: #1a5a2e;
             border-left-color: #2ecc71;
         }
-        
+
         body.dark-mode table th {
             background-color: #2c3e50;
         }
-        
+
         body.dark-mode table tr:nth-child(even) {
             background-color: #2d2d2d;
         }
-        
+
         body.dark-mode table td {
             border-color: #444;
         }
-        
+
         body.dark-mode .exercise {
             background-color: #2d2d2d;
         }
-        
+
         /* Progress bar */
         .progress-container {
             width: 100%;
@@ -435,7 +440,7 @@
             border-radius: 5px;
             margin: 20px 0;
         }
-        
+
         .progress-bar {
             height: 10px;
             background-color: var(--primary-color);
@@ -443,12 +448,13 @@
             width: 0%;
             transition: width 0.3s;
         }
-        
+
         body.dark-mode .progress-container {
             background-color: #2d2d2d;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container header-content">
@@ -465,40 +471,45 @@
             </div>
         </div>
     </header>
-    
+
     <div class="container">
         <aside class="sidebar">
             <h3 class="toc-title">Table of Contents</h3>
             <ul class="toc-list" id="tocList">
                 <!-- Table of contents will be generated by JavaScript -->
             </ul>
-            
+
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
             <p>Reading progress: <span id="progressText">0%</span></p>
         </aside>
-        
+
         <main class="main-content" id="mainContent">
             <!-- Introduction -->
             <section class="chapter" id="introduction">
                 <h2>Introduction to Web Development</h2>
-                <p>Welcome to <em>The Complete Web Development Book</em>! This comprehensive guide will take you from the very basics of how the web works to advanced modern web development techniques.</p>
-                
+                <p>Welcome to <em>The Complete Web Development Book</em>! This comprehensive guide will take you from
+                    the very basics of how the web works to advanced modern web development techniques.</p>
+
                 <h3>What is Web Development?</h3>
-                <p>Web development refers to the building, creating, and maintaining of websites. It includes aspects such as web design, web publishing, web programming, and database management.</p>
-                
+                <p>Web development refers to the building, creating, and maintaining of websites. It includes aspects
+                    such as web design, web publishing, web programming, and database management.</p>
+
                 <p>Web development can be broken down into three layers:</p>
                 <ol>
-                    <li><strong>Client-side (Frontend)</strong>: What users see and interact with (HTML, CSS, JavaScript)</li>
-                    <li><strong>Server-side (Backend)</strong>: The server, application, and database that work behind the scenes</li>
+                    <li><strong>Client-side (Frontend)</strong>: What users see and interact with (HTML, CSS,
+                        JavaScript)</li>
+                    <li><strong>Server-side (Backend)</strong>: The server, application, and database that work behind
+                        the scenes</li>
                     <li><strong>Database</strong>: Where all the data is stored and retrieved</li>
                 </ol>
-                
+
                 <div class="note">
-                    <p><strong>Note:</strong> Modern web developers often work with all three layers, earning the title "full-stack developer."</p>
+                    <p><strong>Note:</strong> Modern web developers often work with all three layers, earning the title
+                        "full-stack developer."</p>
                 </div>
-                
+
                 <h3>How the Web Works</h3>
                 <p>When you type a web address into your browser:</p>
                 <ol>
@@ -508,25 +519,26 @@
                     <li>The server processes the request and sends back an HTTP response</li>
                     <li>Your browser receives the response and renders the webpage</li>
                 </ol>
-                
+
                 <div class="diagram">
                     <p><strong>Web Request Flow Diagram</strong></p>
                     <p>Browser → DNS → Web Server → Database → Web Server → Browser</p>
                 </div>
             </section>
-            
+
             <!-- HTML -->
             <section class="chapter" id="html">
                 <h2>HTML: The Structure of the Web</h2>
-                <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It provides the structure of a webpage.</p>
-                
+                <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It provides
+                    the structure of a webpage.</p>
+
                 <h3>Basic HTML Document Structure</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>HTML</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>&lt;!DOCTYPE html&gt;
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -539,7 +551,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                 </div>
-                
+
                 <h3>Common HTML Elements</h3>
                 <table>
                     <tr>
@@ -578,19 +590,19 @@
                         <td>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;</td>
                     </tr>
                 </table>
-                
+
                 <h3>HTML5 Semantic Elements</h3>
                 <p>HTML5 introduced semantic elements that clearly describe their meaning:</p>
                 <ul>
-                    <li><code>&lt;header&gt;</code> - Introductory content</li>
-                    <li><code>&lt;nav&gt;</code> - Navigation links</li>
-                    <li><code>&lt;main&gt;</code> - Main content</li>
-                    <li><code>&lt;article&gt;</code> - Independent, self-contained content</li>
-                    <li><code>&lt;section&gt;</code> - Thematic grouping of content</li>
-                    <li><code>&lt;aside&gt;</code> - Sidebar content</li>
-                    <li><code>&lt;footer&gt;</code> - Footer content</li>
+                    <li><code class="language-html">&lt;header&gt;</code> - Introductory content</li>
+                    <li><code class="language-html">&lt;nav&gt;</code> - Navigation links</li>
+                    <li><code class="language-html">&lt;main&gt;</code> - Main content</li>
+                    <li><code class="language-html">&lt;article&gt;</code> - Independent, self-contained content</li>
+                    <li><code class="language-html">&lt;section&gt;</code> - Thematic grouping of content</li>
+                    <li><code class="language-html">&lt;aside&gt;</code> - Sidebar content</li>
+                    <li><code class="language-html">&lt;footer&gt;</code> - Footer content</li>
                 </ul>
-                
+
                 <div class="exercise">
                     <div class="exercise-title">Exercise: Create a Basic HTML Page</div>
                     <p>Create an HTML page with:</p>
@@ -608,7 +620,7 @@
                                 <span>HTML</span>
                                 <span class="code-copy" onclick="copyCode(this)">Copy</span>
                             </div>
-                            <pre><code>&lt;!DOCTYPE html&gt;
+                            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -631,12 +643,13 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- CSS -->
             <section class="chapter" id="css">
                 <h2>CSS: Styling the Web</h2>
-                <p>CSS (Cascading Style Sheets) is used to style and layout web pages — for example, to alter the font, color, size, and spacing of your content.</p>
-                
+                <p>CSS (Cascading Style Sheets) is used to style and layout web pages — for example, to alter the font,
+                    color, size, and spacing of your content.</p>
+
                 <h3>CSS Syntax</h3>
                 <p>CSS consists of selectors and declaration blocks:</p>
                 <div class="code-block">
@@ -644,29 +657,29 @@
                         <span>CSS</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>selector {
+                    <pre><code class="language-css">selector {
     property: value;
     another-property: value;
 }</code></pre>
                 </div>
-                
+
                 <h3>Ways to Include CSS</h3>
                 <ol>
                     <li><strong>Inline CSS</strong>: Using the style attribute in HTML elements
-                        <pre><code>&lt;p style="color: blue;"&gt;Blue text&lt;/p&gt;</code></pre>
+                        <pre><code class="language-html">&lt;p style="color: blue;"&gt;Blue text&lt;/p&gt;</code></pre>
                     </li>
                     <li><strong>Internal CSS</strong>: Using &lt;style&gt; element in the &lt;head&gt; section
-                        <pre><code>&lt;style&gt;
+                        <pre><code class="language-html">&lt;style&gt;
     p {
         color: blue;
     }
 &lt;/style&gt;</code></pre>
                     </li>
                     <li><strong>External CSS</strong>: Linking to an external .css file
-                        <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+                        <pre><code class="language-html">&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
                     </li>
                 </ol>
-                
+
                 <h3>CSS Selectors</h3>
                 <table>
                     <tr>
@@ -700,7 +713,7 @@
                         <td>Selects all &lt;p&gt; elements inside &lt;div&gt; elements</td>
                     </tr>
                 </table>
-                
+
                 <h3>Box Model</h3>
                 <p>Every element in CSS is a rectangular box with:</p>
                 <ul>
@@ -709,12 +722,12 @@
                     <li><strong>Border</strong>: Surrounds the padding</li>
                     <li><strong>Margin</strong>: Space between this element and others</li>
                 </ul>
-                
+
                 <div class="diagram">
                     <p><strong>CSS Box Model Diagram</strong></p>
                     <p>Margin → Border → Padding → Content</p>
                 </div>
-                
+
                 <div class="exercise">
                     <div class="exercise-title">Exercise: Style Your HTML Page</div>
                     <p>Add CSS to your previous HTML page to:</p>
@@ -732,7 +745,7 @@
                                 <span>CSS</span>
                                 <span class="code-copy" onclick="copyCode(this)">Copy</span>
                             </div>
-                            <pre><code>body {
+                            <pre><code class="language-css">body {
     font-family: Arial, sans-serif;
 }
 
@@ -758,19 +771,19 @@ main {
                     </div>
                 </div>
             </section>
-            
+
             <!-- JavaScript -->
             <section class="chapter" id="javascript">
                 <h2>JavaScript: Making the Web Interactive</h2>
                 <p>JavaScript is a programming language that allows you to implement complex features on web pages.</p>
-                
+
                 <h3>JavaScript Basics</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>JavaScript</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>// Variables
+                    <pre><code class="language-js">// Variables
 let name = 'John';
 const age = 30;
 var isDeveloper = true; // Avoid var in modern JS
@@ -807,16 +820,17 @@ document.querySelector('button').addEventListener('click', () => {
     alert('Button clicked!');
 });</code></pre>
                 </div>
-                
+
                 <h3>DOM Manipulation</h3>
-                <p>The Document Object Model (DOM) is a programming interface for web documents. JavaScript can manipulate the DOM to change:</p>
+                <p>The Document Object Model (DOM) is a programming interface for web documents. JavaScript can
+                    manipulate the DOM to change:</p>
                 <ul>
                     <li>The HTML elements on the page</li>
                     <li>The attributes of those elements</li>
                     <li>The CSS styles</li>
                     <li>React to events (clicks, keypresses, etc.)</li>
                 </ul>
-                
+
                 <h3>Common DOM Methods</h3>
                 <table>
                     <tr>
@@ -850,7 +864,7 @@ document.querySelector('button').addEventListener('click', () => {
                         <td>document.createElement('div')</td>
                     </tr>
                 </table>
-                
+
                 <div class="exercise">
                     <div class="exercise-title">Exercise: Add JavaScript to Your Page</div>
                     <p>Enhance your page with JavaScript to:</p>
@@ -867,7 +881,7 @@ document.querySelector('button').addEventListener('click', () => {
                                 <span>JavaScript</span>
                                 <span class="code-copy" onclick="copyCode(this)">Copy</span>
                             </div>
-                            <pre><code>// Change heading color on click
+                            <pre><code class="language-js">// Change heading color on click
 document.querySelector('h1').addEventListener('click', function() {
     this.style.color = this.style.color === 'red' ? '#2c3e50' : 'red';
 });
@@ -901,16 +915,17 @@ counterBtn.addEventListener('click', () => {
                     </div>
                 </div>
             </section>
-            
+
             <!-- Responsive Design -->
             <section class="chapter" id="responsive-design">
                 <h2>Responsive Web Design</h2>
-                <p>Responsive web design makes your web pages look good on all devices (desktops, tablets, and phones).</p>
-                
+                <p>Responsive web design makes your web pages look good on all devices (desktops, tablets, and phones).
+                </p>
+
                 <h3>Viewport Meta Tag</h3>
                 <p>This tag should be in all your HTML pages:</p>
-                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
-                
+                <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
                 <h3>Media Queries</h3>
                 <p>Media queries allow you to apply CSS rules based on device characteristics (usually width):</p>
                 <div class="code-block">
@@ -918,7 +933,7 @@ counterBtn.addEventListener('click', () => {
                         <span>CSS</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>/* Default styles for mobile */
+                    <pre><code class="language-css">/* Default styles for mobile */
 .container {
     width: 100%;
     padding: 10px;
@@ -940,7 +955,7 @@ counterBtn.addEventListener('click', () => {
     }
 }</code></pre>
                 </div>
-                
+
                 <h3>Flexbox</h3>
                 <p>Flexbox is a layout model that allows elements to align and distribute space within a container:</p>
                 <div class="code-block">
@@ -948,7 +963,7 @@ counterBtn.addEventListener('click', () => {
                         <span>CSS</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>.container {
+                    <pre><code class="language-css">.container {
     display: flex;
     flex-direction: row; /* or column */
     justify-content: center; /* main axis alignment */
@@ -961,7 +976,7 @@ counterBtn.addEventListener('click', () => {
     min-width: 200px; /* minimum width before wrapping */
 }</code></pre>
                 </div>
-                
+
                 <h3>CSS Grid</h3>
                 <p>CSS Grid is a two-dimensional layout system for the web:</p>
                 <div class="code-block">
@@ -969,7 +984,7 @@ counterBtn.addEventListener('click', () => {
                         <span>CSS</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>.container {
+                    <pre><code class="language-css">.container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
@@ -987,7 +1002,7 @@ counterBtn.addEventListener('click', () => {
     }
 }</code></pre>
                 </div>
-                
+
                 <div class="exercise">
                     <div class="exercise-title">Exercise: Make Your Page Responsive</div>
                     <p>Update your page to be responsive:</p>
@@ -1004,7 +1019,7 @@ counterBtn.addEventListener('click', () => {
                                 <span>CSS</span>
                                 <span class="code-copy" onclick="copyCode(this)">Copy</span>
                             </div>
-                            <pre><code>/* Mobile first approach */
+                            <pre><code class="language-css">/* Mobile first approach */
 body {
     font-size: 16px;
 }
@@ -1046,12 +1061,12 @@ img {
                     </div>
                 </div>
             </section>
-            
+
             <!-- Frontend Frameworks -->
             <section class="chapter" id="frontend-frameworks">
                 <h2>Frontend Frameworks</h2>
                 <p>Frontend frameworks help build complex, interactive user interfaces more efficiently.</p>
-                
+
                 <h3>Popular Frontend Frameworks</h3>
                 <table>
                     <tr>
@@ -1080,14 +1095,14 @@ img {
                         <td>When performance is critical</td>
                     </tr>
                 </table>
-                
+
                 <h3>React Example</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>JavaScript (React)</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>import React, { useState } from 'react';
+                    <pre><code class="language-js">import React, { useState } from 'react';
 
 function Counter() {
     const [count, setCount] = useState(0);
@@ -1104,26 +1119,28 @@ function Counter() {
 
 export default Counter;</code></pre>
                 </div>
-                
+
                 <h3>Component-Based Architecture</h3>
-                <p>Modern frontend frameworks use a component-based architecture where UIs are built from reusable components:</p>
+                <p>Modern frontend frameworks use a component-based architecture where UIs are built from reusable
+                    components:</p>
                 <ul>
                     <li><strong>Components</strong> are self-contained pieces of UI</li>
                     <li>They can have their own state and props (properties)</li>
                     <li>Components can be nested and composed together</li>
                     <li>Promotes reusability and maintainability</li>
                 </ul>
-                
+
                 <div class="note">
-                    <p><strong>Note:</strong> While frameworks are powerful, it's important to master core JavaScript first before learning a framework.</p>
+                    <p><strong>Note:</strong> While frameworks are powerful, it's important to master core JavaScript
+                        first before learning a framework.</p>
                 </div>
             </section>
-            
+
             <!-- Backend Development -->
             <section class="chapter" id="backend-development">
                 <h2>Backend Development</h2>
                 <p>Backend development involves server-side logic, databases, and APIs that power web applications.</p>
-                
+
                 <h3>Server-Side Programming Languages</h3>
                 <table>
                     <tr>
@@ -1162,14 +1179,14 @@ export default Counter;</code></pre>
                         <td>Windows-based applications</td>
                     </tr>
                 </table>
-                
+
                 <h3>Node.js with Express Example</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>JavaScript (Node.js)</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>const express = require('express');
+                    <pre><code class="language-js">const express = require('express');
 const app = express();
 const port = 3000;
 
@@ -1192,9 +1209,10 @@ app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });</code></pre>
                 </div>
-                
+
                 <h3>RESTful API Principles</h3>
-                <p>REST (Representational State Transfer) is an architectural style for designing networked applications:</p>
+                <p>REST (Representational State Transfer) is an architectural style for designing networked
+                    applications:</p>
                 <ul>
                     <li><strong>Client-Server</strong>: Separation of concerns</li>
                     <li><strong>Stateless</strong>: Each request contains all necessary information</li>
@@ -1202,7 +1220,7 @@ app.listen(port, () => {
                     <li><strong>Uniform Interface</strong>: Resources are identified in requests</li>
                     <li><strong>Layered System</strong>: Client can't tell if it's connected directly to server</li>
                 </ul>
-                
+
                 <h3>Common HTTP Methods</h3>
                 <table>
                     <tr>
@@ -1237,12 +1255,12 @@ app.listen(port, () => {
                     </tr>
                 </table>
             </section>
-            
+
             <!-- Databases -->
             <section class="chapter" id="databases">
                 <h2>Databases</h2>
                 <p>Databases store and manage data for web applications.</p>
-                
+
                 <h3>Types of Databases</h3>
                 <table>
                     <tr>
@@ -1266,7 +1284,7 @@ app.listen(port, () => {
                         <td>CockroachDB, Google Spanner</td>
                     </tr>
                 </table>
-                
+
                 <h3>SQL vs NoSQL</h3>
                 <table>
                     <tr>
@@ -1300,14 +1318,14 @@ app.listen(port, () => {
                         <td>Large datasets, flexibility</td>
                     </tr>
                 </table>
-                
+
                 <h3>SQL Basics</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>SQL</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>-- Create a table
+                    <pre><code class="language-sql">-- Create a table
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -1333,14 +1351,14 @@ SELECT users.username, orders.total
 FROM users
 JOIN orders ON users.id = orders.user_id;</code></pre>
                 </div>
-                
+
                 <h3>MongoDB Basics</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <span>JavaScript (MongoDB)</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code>// Insert a document
+                    <pre><code class="language-js">// Insert a document
 db.users.insertOne({
     username: "johndoe",
     email: "john@example.com",
@@ -1366,12 +1384,12 @@ db.orders.aggregate([
 ]);</code></pre>
                 </div>
             </section>
-            
+
             <!-- Deployment -->
             <section class="chapter" id="deployment">
                 <h2>Deployment and DevOps</h2>
                 <p>Deployment involves making your web application available to users on the internet.</p>
-                
+
                 <h3>Deployment Options</h3>
                 <table>
                     <tr>
@@ -1405,21 +1423,22 @@ db.orders.aggregate([
                         <td>AWS Lambda, Google Cloud Functions</td>
                     </tr>
                 </table>
-                
+
                 <h3>CI/CD Pipeline</h3>
-                <p>Continuous Integration and Continuous Deployment automates the process of testing and deploying code:</p>
+                <p>Continuous Integration and Continuous Deployment automates the process of testing and deploying code:
+                </p>
                 <ol>
                     <li>Developer pushes code to repository</li>
                     <li>CI server runs automated tests</li>
                     <li>If tests pass, code is deployed to staging</li>
                     <li>After approval, code is deployed to production</li>
                 </ol>
-                
+
                 <div class="diagram">
                     <p><strong>CI/CD Pipeline Diagram</strong></p>
                     <p>Code → Test → Build → Deploy → Monitor</p>
                 </div>
-                
+
                 <h3>Docker Basics</h3>
                 <p>Docker containers package applications with all their dependencies:</p>
                 <div class="code-block">
@@ -1427,7 +1446,7 @@ db.orders.aggregate([
                         <span>Dockerfile</span>
                         <span class="code-copy" onclick="copyCode(this)">Copy</span>
                     </div>
-                    <pre><code># Use an official Node runtime as a parent image
+                    <pre><code class="language-dockerfile"># Use an official Node runtime as a parent image
 FROM node:14-alpine
 
 # Set the working directory
@@ -1451,7 +1470,7 @@ EXPOSE 3000
 # Define the command to run the app
 CMD ["npm", "start"]</code></pre>
                 </div>
-                
+
                 <h3>Basic Deployment Steps</h3>
                 <ol>
                     <li>Prepare your application (minify assets, set environment variables)</li>
@@ -1462,12 +1481,12 @@ CMD ["npm", "start"]</code></pre>
                     <li>Set up monitoring and logging</li>
                 </ol>
             </section>
-            
+
             <!-- Web Security -->
             <section class="chapter" id="web-security">
                 <h2>Web Security</h2>
                 <p>Web security is critical to protect user data and prevent attacks.</p>
-                
+
                 <h3>Common Web Vulnerabilities</h3>
                 <table>
                     <tr>
@@ -1501,7 +1520,7 @@ CMD ["npm", "start"]</code></pre>
                         <td>Encryption in transit and at rest</td>
                     </tr>
                 </table>
-                
+
                 <h3>HTTPS and SSL/TLS</h3>
                 <p>HTTPS encrypts communication between client and server:</p>
                 <ul>
@@ -1510,7 +1529,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>Redirect all HTTP traffic to HTTPS</li>
                     <li>Use HTTP Strict Transport Security (HSTS)</li>
                 </ul>
-                
+
                 <h3>Authentication Best Practices</h3>
                 <ul>
                     <li>Use strong, adaptive hashing algorithms (bcrypt, Argon2)</li>
@@ -1519,17 +1538,18 @@ CMD ["npm", "start"]</code></pre>
                     <li>Never store plain text passwords</li>
                     <li>Use secure, HTTP-only cookies for sessions</li>
                 </ul>
-                
+
                 <div class="danger">
-                    <p><strong>Warning:</strong> Security is not a feature you can add later. It must be considered from the beginning of your project.</p>
+                    <p><strong>Warning:</strong> Security is not a feature you can add later. It must be considered from
+                        the beginning of your project.</p>
                 </div>
             </section>
-            
+
             <!-- Advanced Topics -->
             <section class="chapter" id="advanced-topics">
                 <h2>Advanced Topics</h2>
                 <p>Once you've mastered the fundamentals, these advanced topics can take your skills further.</p>
-                
+
                 <h3>Progressive Web Apps (PWAs)</h3>
                 <p>PWAs are web apps that use modern web capabilities to deliver an app-like experience:</p>
                 <ul>
@@ -1538,7 +1558,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>Push notifications</li>
                     <li>Fast and reliable</li>
                 </ul>
-                
+
                 <h3>WebAssembly</h3>
                 <p>WebAssembly is a binary instruction format that allows running code at near-native speed:</p>
                 <ul>
@@ -1546,7 +1566,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>Ideal for performance-critical applications (games, video editing)</li>
                     <li>Works alongside JavaScript</li>
                 </ul>
-                
+
                 <h3>Web Components</h3>
                 <p>Web Components are a set of web platform APIs that allow you to create reusable custom elements:</p>
                 <ul>
@@ -1554,7 +1574,7 @@ CMD ["npm", "start"]</code></pre>
                     <li><strong>Shadow DOM</strong>: Encapsulated DOM and styles</li>
                     <li><strong>HTML Templates</strong>: Reusable markup templates</li>
                 </ul>
-                
+
                 <h3>Web Performance Optimization</h3>
                 <p>Techniques to make your website faster:</p>
                 <ul>
@@ -1564,7 +1584,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>Use CDNs for static assets</li>
                     <li>Implement caching strategies</li>
                 </ul>
-                
+
                 <h3>Web Accessibility (a11y)</h3>
                 <p>Making websites usable by people with disabilities:</p>
                 <ul>
@@ -1574,17 +1594,17 @@ CMD ["npm", "start"]</code></pre>
                     <li>Color contrast</li>
                     <li>Screen reader compatibility</li>
                 </ul>
-                
+
                 <div class="note">
                     <p><strong>Note:</strong> Accessibility isn't just good practice - in many places it's the law.</p>
                 </div>
             </section>
-            
+
             <!-- Conclusion -->
             <section class="chapter" id="conclusion">
                 <h2>Conclusion and Next Steps</h2>
                 <p>Congratulations on completing this comprehensive web development guide! Here's what to do next:</p>
-                
+
                 <h3>Build Projects</h3>
                 <p>The best way to learn is by building. Some project ideas:</p>
                 <ul>
@@ -1594,7 +1614,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>E-commerce site</li>
                     <li>Social media dashboard</li>
                 </ul>
-                
+
                 <h3>Contribute to Open Source</h3>
                 <p>Contributing to open source projects helps you:</p>
                 <ul>
@@ -1602,7 +1622,7 @@ CMD ["npm", "start"]</code></pre>
                     <li>Collaborate with other developers</li>
                     <li>Build your portfolio</li>
                 </ul>
-                
+
                 <h3>Stay Updated</h3>
                 <p>Web development evolves quickly. Stay current by:</p>
                 <ul>
@@ -1611,89 +1631,94 @@ CMD ["npm", "start"]</code></pre>
                     <li>Attending conferences or meetups</li>
                     <li>Experimenting with new technologies</li>
                 </ul>
-                
+
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> - Comprehensive web documentation</li>
-                    <li><a href="https://freecodecamp.org" target="_blank">freeCodeCamp</a> - Free coding curriculum</li>
-                    <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters</a> - In-depth courses</li>
-                    <li><a href="https://css-tricks.com" target="_blank">CSS-Tricks</a> - Web design and development articles</li>
+                    <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> - Comprehensive web
+                        documentation</li>
+                    <li><a href="https://freecodecamp.org" target="_blank">freeCodeCamp</a> - Free coding curriculum
+                    </li>
+                    <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters</a> - In-depth courses
+                    </li>
+                    <li><a href="https://css-tricks.com" target="_blank">CSS-Tricks</a> - Web design and development
+                        articles</li>
                     <li><a href="https://dev.to" target="_blank">DEV Community</a> - Developer discussions</li>
                 </ul>
-                
+
                 <div class="success">
-                    <p><strong>Final Thought:</strong> Web development is a journey of continuous learning. Keep coding, keep building, and most importantly, have fun!</p>
+                    <p><strong>Final Thought:</strong> Web development is a journey of continuous learning. Keep coding,
+                        keep building, and most importantly, have fun!</p>
                 </div>
             </section>
         </main>
     </div>
-    
+
     <footer>
         <div class="container">
             <p>&copy; 2023 The Complete Web Development Book. All rights reserved.</p>
             <p>Created with HTML, CSS, and JavaScript</p>
         </div>
     </footer>
-    
+
     <script>
         // Generate table of contents
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const chapters = document.querySelectorAll('.chapter');
             const tocList = document.getElementById('tocList');
-            
+
             chapters.forEach(chapter => {
                 const id = chapter.id;
                 const title = chapter.querySelector('h2').textContent;
-                
+
                 const li = document.createElement('li');
                 li.className = 'toc-item';
-                
+
                 const a = document.createElement('a');
                 a.href = `#${id}`;
                 a.className = 'toc-link';
                 a.textContent = title;
-                
+
                 li.appendChild(a);
                 tocList.appendChild(li);
             });
-            
+
             // Dark mode toggle
             const darkModeToggle = document.getElementById('darkModeToggle');
-            darkModeToggle.addEventListener('change', function() {
+            darkModeToggle.addEventListener('change', function () {
                 document.body.classList.toggle('dark-mode', this.
-                                // Save preference to localStorage
-                                localStorage.setItem('darkMode', this.checked));
+                    // Save preference to localStorage
+                    localStorage.setItem('darkMode', this.checked));
             });
-            
+
             // Check for saved preference
             if (localStorage.getItem('darkMode') === 'true') {
                 darkModeToggle.checked = true;
                 document.body.classList.add('dark-mode');
             }
-            
+
             // Reading progress tracker
             const progressBar = document.getElementById('progressBar');
             const progressText = document.getElementById('progressText');
             const mainContent = document.getElementById('mainContent');
-            
+
             function updateProgress() {
                 const contentHeight = mainContent.offsetHeight;
                 const scrollPosition = window.scrollY;
                 const windowHeight = window.innerHeight;
-                
+
                 // Calculate how much of the content has been scrolled through
                 const scrolled = scrollPosition + windowHeight;
                 const progress = Math.min((scrolled / (contentHeight + windowHeight)) * 100, 100);
-                
+
                 progressBar.style.width = `${progress}%`;
                 progressText.textContent = `${Math.round(progress)}%`;
             }
-            
+
             window.addEventListener('scroll', updateProgress);
             window.addEventListener('resize', updateProgress);
             updateProgress(); // Initial call
         });
-        
+
         // Copy code functionality
         function copyCode(button) {
             const codeBlock = button.parentElement.nextElementSibling;
@@ -1703,7 +1728,7 @@ CMD ["npm", "start"]</code></pre>
             window.getSelection().addRange(range);
             document.execCommand('copy');
             window.getSelection().removeAllRanges();
-            
+
             // Visual feedback
             const originalText = button.textContent;
             button.textContent = 'Copied!';
@@ -1711,7 +1736,7 @@ CMD ["npm", "start"]</code></pre>
                 button.textContent = originalText;
             }, 2000);
         }
-        
+
         // Show/hide exercise solutions
         function showSolution(id) {
             const solution = document.getElementById(id);
@@ -1721,12 +1746,12 @@ CMD ["npm", "start"]</code></pre>
                 solution.style.display = 'none';
             }
         }
-        
+
         // Interactive code editor (simplified)
         function runCode() {
             const code = document.getElementById('interactiveCode').value;
             const output = document.getElementById('codeOutput');
-            
+
             try {
                 // Note: In a real implementation, you'd want to sanitize this
                 output.innerHTML = eval(code);
@@ -1735,12 +1760,12 @@ CMD ["npm", "start"]</code></pre>
             }
         }
     </script>
-    
+
     <!-- Interactive Learning Section -->
     <section class="chapter" id="interactive-learning">
         <h2>Interactive Learning</h2>
         <p>Try out these interactive examples to practice your skills:</p>
-        
+
         <h3>JavaScript Playground</h3>
         <div class="code-block">
             <div class="code-header">
@@ -1754,7 +1779,7 @@ document.write(message);</textarea>
             <button class="btn" onclick="runCode()">Run Code</button>
             <div id="codeOutput" class="code-output"></div>
         </div>
-        
+
         <h3>CSS Sandbox</h3>
         <div class="sandbox-container">
             <div class="sandbox-editor">
@@ -1774,7 +1799,7 @@ document.write(message);</textarea>
                 <div id="sandboxBox" class="sandbox-box">Hover me!</div>
             </div>
         </div>
-        
+
         <style>
             .interactive-code {
                 width: 100%;
@@ -1787,9 +1812,9 @@ document.write(message);</textarea>
                 margin-top: 10px;
                 font-size: large;
                 color: rgb(255, 255, 255);
-                height:auto;
+                height: auto;
             }
-            
+
             .code-output {
                 padding: 15px;
                 border: 1px solid #ddd;
@@ -1797,17 +1822,18 @@ document.write(message);</textarea>
                 margin-top: 10px;
                 min-height: 50px;
             }
-            
+
             .sandbox-container {
                 display: flex;
                 gap: 20px;
                 margin-top: 20px;
             }
-            
-            .sandbox-editor, .sandbox-preview {
+
+            .sandbox-editor,
+            .sandbox-preview {
                 flex: 1;
             }
-            
+
             .sandbox-box {
                 display: flex;
                 align-items: center;
@@ -1816,30 +1842,30 @@ document.write(message);</textarea>
                 font-weight: bold;
                 cursor: pointer;
             }
-            
+
             .sandbox-box:hover {
                 transform: scale(1.1);
             }
-            
+
             @media (max-width: 768px) {
                 .sandbox-container {
                     flex-direction: column;
                 }
             }
         </style>
-        
+
         <script>
             function applyCSS() {
                 const cssInput = document.getElementById('cssInput').value;
                 const sandboxBox = document.getElementById('sandboxBox');
-                
+
                 try {
                     // Remove any existing style element
                     const existingStyle = document.getElementById('sandboxStyle');
                     if (existingStyle) {
                         existingStyle.remove();
                     }
-                    
+
                     // Create new style element
                     const style = document.createElement('style');
                     style.id = 'sandboxStyle';
@@ -1851,12 +1877,12 @@ document.write(message);</textarea>
             }
         </script>
     </section>
-    
+
     <!-- Web Development Tools -->
     <section class="chapter" id="development-tools">
         <h2>Web Development Tools</h2>
         <p>The right tools can significantly improve your development workflow.</p>
-        
+
         <h3>Essential Developer Tools</h3>
         <table>
             <tr>
@@ -1895,7 +1921,7 @@ document.write(message);</textarea>
                 <td>Postman, Insomnia, curl</td>
             </tr>
         </table>
-        
+
         <h3>VS Code Extensions for Web Dev</h3>
         <ul>
             <li><strong>ESLint</strong>: JavaScript linter</li>
@@ -1905,7 +1931,7 @@ document.write(message);</textarea>
             <li><strong>GitLens</strong>: Git supercharged</li>
             <li><strong>IntelliSense</strong>: Smart code completions</li>
         </ul>
-        
+
         <h3>Browser DevTools Features</h3>
         <div class="diagram">
             <p><strong>Chrome DevTools Overview</strong></p>
@@ -1919,12 +1945,12 @@ document.write(message);</textarea>
             </ul>
         </div>
     </section>
-    
+
     <!-- Career in Web Development -->
     <section class="chapter" id="career-path">
         <h2>Building a Career in Web Development</h2>
         <p>Web development offers diverse career opportunities and paths for growth.</p>
-        
+
         <h3>Common Web Development Roles</h3>
         <table>
             <tr>
@@ -1958,7 +1984,7 @@ document.write(message);</textarea>
                 <td>CI/CD, cloud platforms, Docker</td>
             </tr>
         </table>
-        
+
         <h3>Building Your Portfolio</h3>
         <p>A strong portfolio is crucial for landing web development jobs:</p>
         <ul>
@@ -1968,7 +1994,7 @@ document.write(message);</textarea>
             <li><strong>Write about your work</strong>: Blog posts or case studies</li>
             <li><strong>Keep learning</strong>: Show continuous improvement</li>
         </ul>
-        
+
         <h3>Job Search Strategies</h3>
         <ul>
             <li><strong>Network</strong>: Attend meetups, conferences</li>
@@ -1977,25 +2003,28 @@ document.write(message);</textarea>
             <li><strong>Prepare for interviews</strong>: Practice coding challenges</li>
             <li><strong>Consider internships</strong>: Valuable entry point</li>
         </ul>
-        
+
         <div class="note">
-            <p><strong>Tip:</strong> Soft skills like communication and problem-solving are just as important as technical skills in a professional setting.</p>
+            <p><strong>Tip:</strong> Soft skills like communication and problem-solving are just as important as
+                technical skills in a professional setting.</p>
         </div>
     </section>
-    
+
     <!-- Emerging Trends -->
     <section class="chapter" id="emerging-trends">
         <h2>Emerging Trends in Web Development</h2>
         <p>The web development landscape is constantly evolving. Here are some current trends:</p>
-        
+
         <h3>Modern JavaScript Features</h3>
         <ul>
             <li><strong>ES Modules</strong>: Native JavaScript modules in browsers</li>
-            <li><strong>Optional Chaining</strong>: Safe property access (<code>obj?.property</code>)</li>
-            <li><strong>Nullish Coalescing</strong>: Default values (<code>value ?? 'default'</code>)</li>
+            <li><strong>Optional Chaining</strong>: Safe property access (<code
+                    class="language-js">obj?.property</code>)</li>
+            <li><strong>Nullish Coalescing</strong>: Default values (<code
+                    class="language-js">value ?? 'default'</code>)</li>
             <li><strong>Top-level await</strong>: Using await outside async functions</li>
         </ul>
-        
+
         <h3>Modern CSS Features</h3>
         <ul>
             <li><strong>CSS Grid</strong>: Powerful two-dimensional layouts</li>
@@ -2004,7 +2033,7 @@ document.write(message);</textarea>
             <li><strong>Container Queries</strong>: Element-based responsive design</li>
             <li><strong>CSS Nesting</strong>: Sass-like nesting in native CSS</li>
         </ul>
-        
+
         <h3>Architecture Trends</h3>
         <ul>
             <li><strong>JAMstack</strong>: JavaScript, APIs, and Markup</li>
@@ -2012,7 +2041,7 @@ document.write(message);</textarea>
             <li><strong>Isomorphic Apps</strong>: Same code runs on client and server</li>
             <li><strong>Edge Computing</strong>: Processing closer to users</li>
         </ul>
-        
+
         <h3>Technology to Watch</h3>
         <ul>
             <li><strong>Web3</strong>: Blockchain-based web applications</li>
@@ -2020,10 +2049,18 @@ document.write(message);</textarea>
             <li><strong>Web Components</strong>: Reusable custom elements</li>
             <li><strong>WASM</strong>: High-performance web applications</li>
         </ul>
-        
+
         <div class="warning">
-            <p><strong>Remember:</strong> While it's good to be aware of trends, focus on mastering fundamentals before jumping on every new technology.</p>
+            <p><strong>Remember:</strong> While it's good to be aware of trends, focus on mastering fundamentals before
+                jumping on every new technology.</p>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js"
+        integrity="sha512-Uw06iFFf9hwoN77+kPl/1DZL66tKsvZg6EWm7n6QxInyptVuycfrO52hATXDRozk7KWeXnrSueiglILct8IkkA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"
+        integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>
